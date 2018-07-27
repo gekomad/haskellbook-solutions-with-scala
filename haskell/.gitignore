@@ -1,0 +1,6 @@
+.stack-work/
+*~
+*.iml
+out/
+.idea
+target

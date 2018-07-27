@@ -1,0 +1,33 @@
+cabal-version: >= 1.10
+
+name:           haskell-programming-from-first-principles-solutions
+version:        0.0.0
+license:        MIT
+build-type:     Simple
+
+library
+  hs-source-dirs:
+      src
+  ghc-options: -Wall
+  build-depends:
+      base >= 4.7 && < 5
+  exposed-modules:
+
+  other-modules:
+
+  default-language: Haskell2010
+
+test-suite spec
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+  ghc-options: -Wall
+  build-depends:
+      base >=4.7 && <5
+    , hspec ==2.*
+    , haskell-programming-from-first-principles-solutions
+    , time
+
+  default-language: Haskell2010
+  build-tool-depends: hspec-discover:hspec-discover == 2.*
