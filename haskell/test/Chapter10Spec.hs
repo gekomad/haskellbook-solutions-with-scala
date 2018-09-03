@@ -67,6 +67,8 @@ verbs = ["go", "buy", "walk"]
 -------------------------------
 myOr :: [Bool] -> Bool
 myOr b = foldr (||) False b
+infiniteTrue = True : infiniteTrue
+
 -------------------------------
 myAny :: (a -> Bool) -> [a] -> Bool
 myAny f b = foldr (\x y -> y || f(x) ) False b
@@ -152,6 +154,7 @@ spec = do
     it "Rewriting functions using folds - 1 - myOr (3)" $ do (myOr [True,False]) == True
     it "Rewriting functions using folds - 1 - myOr (4)" $ do (myOr [False,True,False]) == True
     it "Rewriting functions using folds - 1 - myOr (5)" $ do (myOr [False,True]) == True
+    it "Rewriting functions using folds - 1 - myOr (6)" $ do (myOr infiniteTrue) == True
 
     it "Rewriting functions using folds - 2 - myAny (1)" $ do (myAny even [1,3,5]) == False
     it "Rewriting functions using folds - 2 - myAny (2)" $ do (myAny odd [1,3,5]) == True

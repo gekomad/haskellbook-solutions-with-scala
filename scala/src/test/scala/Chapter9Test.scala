@@ -3,6 +3,8 @@ import MyPredef.infiniteFalse
 import org.scalatest.FunSuite
 import MyPredef._
 
+import scala.collection.immutable
+
 class Chapter9Test extends FunSuite {
 
   val firstSen = "Tyger Tyger, burning bright\n"
@@ -52,7 +54,7 @@ class Chapter9Test extends FunSuite {
     }
 
     assert(eftBool(start = false, stop = false) == List(false))
-    assert(eftBool(true, true) == List(true))
+    assert(eftBool(start = true, stop = true) == List(true))
 
   }
 
@@ -94,11 +96,11 @@ class Chapter9Test extends FunSuite {
     assert(go(sentences, '\n') == List("Tyger Tyger, burning bright", "In the forests of the night", "What immortal hand or eye", "Could frame thy fearful symmetry?"))
   }
 
-  val mySqr = for {
+  val mySqr: immutable.IndexedSeq[Double] = for {
     x <- 1 to 5
   } yield Math.pow(x, 2)
 
-  val myCube = for {
+  val myCube: immutable.IndexedSeq[Double] = for {
     y <- 1 to 5
   } yield Math.pow(y, 3)
 
@@ -223,6 +225,7 @@ class Chapter9Test extends FunSuite {
   }
 
   test("Chapter Exercises 4") {
+
     def go(n: List[Char]): String = n match {
       case Nil => ""
       case x :: xs => x.toUpper + go(xs)
@@ -280,11 +283,11 @@ class Chapter9Test extends FunSuite {
   }
 
   test("myOr") {
-    assert(myOr(List(true, true)) == true)
-    assert(myOr(List(false, false)) == false)
-    assert(myOr(List(true, false)) == true)
-    assert(myOr(List(false, true)) == true)
-    assert(myOr(infiniteTrue) == true)
+    assert(myOr(List(true, true)))
+    assert(!myOr(List(false, false)))
+    assert(myOr(List(true, false)))
+    assert(myOr(List(false, true)))
+    assert(myOr(infiniteTrue))
   }
 
 
@@ -351,7 +354,7 @@ class Chapter9Test extends FunSuite {
   //    squishMap _ [] = []
   //    squishMap f (x : xs) = f x ++ squishMap f xs
 
-  def squishMap[A, B](f: (A => List[B]), xs: List[A]): List[B] = xs match {
+  def squishMap[A, B](f: A => List[B], xs: List[A]): List[B] = xs match {
     case Nil => Nil
     case x :: xs => f(x) ::: squishMap(f, xs)
   }

@@ -2,7 +2,12 @@ object MyPredef {
 
   import scala.math.Ordered._
 
-  def words(s: String): List[String] = s.split(" ").toList
+  def words(s: String): Seq[String] = s.split(" ").toList
+
+  def mySplit(s: String, sep: String = " "): Seq[String] = {
+    val ss = s.split(sep).toList
+    if (s.endsWith(sep)) ss ++ List("") else ss
+  }
 
   def max[A: Ordering](a: A, b: A): A = (a, b) match {
     case ("", b) => b
@@ -22,7 +27,7 @@ object MyPredef {
 
   //  flip                    :: (a -> b -> c) -> b -> a -> c
   //  flip f x y              =  f y x
-  def flip[A, B, C](f: ((A, B) => C), b: B, a: A): C = f(a, b)
+  def flip[A, B, C](f: (A, B) => C, b: B, a: A): C = f(a, b)
 
   def infiniteFalse: Stream[Boolean] = false #:: infiniteFalse
 

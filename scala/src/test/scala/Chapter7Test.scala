@@ -45,7 +45,7 @@ class Chapter7Test extends FunSuite {
 
     def k1 = k(4 - 1, 10)
 
-    def k2 = k("three", (1 + 2))
+    def k2 = k("three", 1 + 2)
 
     def k3 = k(3, true)
 
@@ -152,7 +152,7 @@ class Chapter7Test extends FunSuite {
 
 
     assert {
-      foldBool(1, 3, true) == foldBool(1, 3, true) && foldBool(1, 3, true) == 1
+      foldBool(1, 3, b = true) == foldBool(1, 3, true) && foldBool(1, 3, b = true) == 1
     }
 
     assert {
@@ -168,7 +168,7 @@ class Chapter7Test extends FunSuite {
     //    g f (a,b) = (t,b)
     //    where t = f a
 
-    def g[A, B, C](f: (A => B))(ac: (A, C)): (B, C) = ac match {
+    def g[A, B, C](f: A => B)(ac: (A, C)): (B, C) = ac match {
       case (a, b) => (f(a), b)
     }
 

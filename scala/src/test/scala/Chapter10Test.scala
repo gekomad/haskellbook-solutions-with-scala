@@ -29,7 +29,7 @@ class Chapter10Test extends FunSuite {
 
     assert {
 
-      List(false, true).foldRight(true)(_ && _) == false
+      !List(false, true).foldRight(true)(_ && _)
 
     }
   }
@@ -39,7 +39,7 @@ class Chapter10Test extends FunSuite {
 
     assert {
 
-      List(false, true).foldRight(true)(_ || _) == true
+      List(false, true).foldRight(true)(_ || _)
 
     }
   }
@@ -320,7 +320,7 @@ class Chapter10Test extends FunSuite {
 
     def myOr(b: Seq[Boolean]): Boolean = b.foldRight(false)(_ || _)
 
-    assert(myOr(List(true, true)) == true)
+    assert(myOr(List(true, true)))
     assert(myOr(List(false, false)) == false)
     assert(myOr(List(true, false)) == true)
     assert(myOr(List(false, true, false)) == true)
@@ -387,7 +387,7 @@ class Chapter10Test extends FunSuite {
 
   }
 
-  def squishMap[A, B](f: (A => List[B]), xs: List[A]): List[B] = xs.foldRight(List.empty[B])((a, acc) => f(a) ::: acc)
+  def squishMap[A, B](f: A => List[B], xs: List[A]): List[B] = xs.foldRight(List.empty[B])((a, acc) => f(a) ::: acc)
 
   test("Rewriting functions using folds - 8 - squishMap") {
 
@@ -400,7 +400,7 @@ class Chapter10Test extends FunSuite {
 
   test("Rewriting functions using folds - 9 - squishAgain") {
 
-    def squishAgain[A](xs: List[List[A]]): List[A] = squishMap(((x: List[A]) => x), xs)
+    def squishAgain[A](xs: List[List[A]]): List[A] = squishMap((x: List[A]) => x, xs)
 
     assert(squishAgain(List(List(1, 2), List(3))) == List(1, 2, 3))
     assert(squishAgain(List(List())) == List())

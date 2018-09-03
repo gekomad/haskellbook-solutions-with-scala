@@ -148,7 +148,7 @@ class Chapter6Test extends FunSuite {
   }
 
   test("cats show") {
-    println(" -- cats show -- ")
+
     import cats.Show
     import cats.Order
     import cats.instances.int._
@@ -178,7 +178,7 @@ class Chapter6Test extends FunSuite {
     val mon: DayOfWeek = Mon
     val sun: DayOfWeek = Sun
 
-    //assert(30.show == "** 30 **") TODO
+//    assert(30.show == "** 30 **") TODO
 
     assert(Foo(3).show == "** Foo(3) **")
     assert(mon.show == "** Mon **")
@@ -188,15 +188,11 @@ class Chapter6Test extends FunSuite {
 
 
   test("cats eq") {
-    println(" -- cats eq -- ")
-
     testEq
-
   }
 
 //  test("cats ord") {
-//    println(" -- cats ord -- ")
-//
+
 //    testOrd
 //
 //  }

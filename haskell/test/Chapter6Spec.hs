@@ -125,26 +125,26 @@ spec = do
     it "TisAnInt \"a\" == TisAnInt \"b\"" $ do (TisAString "a") /= (TisAString "b" )
 
 --4
-    it "Pair 1 2 == Pair 1 1" $ do Pair (1::Integer) (2::Integer) /= Pair (1::Integer) (1::Integer)
+    it "Pair 1 2 == Pair 1 1" $ do Pair 1 2 /= Pair 1 1
 
     it "Pair \"1\" \"2\"  == Pair \"1\" \"2\"" $ do (Pair "1" "2") == (Pair "1" "2")
 
 --5
-    it "Tuple 1 \"2\" /= Tuple 1 \"1\" " $ do (Tuple (1::Integer) "2" ) /= (Tuple (1::Integer) "1")
+    it "Tuple 1 \"2\" /= Tuple 1 \"1\" " $ do (Tuple 1 "2" ) /= (Tuple 1 "1")
 
     it "Tuple 1 \"2\" == Tuple 1 \"2\" " $ do (Tuple "1" "2" ) == (Tuple "1" "2")
 
 --6
-    it "ThisOne 1 == ThisOne 1" $ do ThisOne (1::Integer) == ThisOne (1::Integer)
+    it "ThisOne 1 == ThisOne 1" $ do ThisOne 1 == ThisOne 1
 
     it "ThatOne \"1\" == ThatOne \"1\"" $ do ThatOne "1" == ThatOne "1"
 
-    it "ThisOne 1 == ThatOne 1" $ do ThisOne (1::Integer) == ThatOne (1::Integer)
+    it "ThisOne 1 == ThatOne 1" $ do ThisOne 1 == ThatOne 1
 
     it "ThatOne \"1\" == ThisOne \"1\"" $ do ThatOne "1" == ThisOne "1"
 
 --7 TODO
---    it "Hello 1 == Hello 1" $ do (Hello (1 :: Int)) == (Hello (1 :: Int))
+--    it ("Hello 1 == Hello 1") $ do Hello 1 == Hello 1
 --    it "Goodbye \"1\" == Goodbye \"1\"" $ do (Goodbye "1") == (Goodbye "1")
 
 --1
