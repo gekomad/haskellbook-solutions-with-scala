@@ -1,7 +1,6 @@
 import org.scalatest.FunSuite
 
 import scala.annotation.tailrec
-import scala.collection.immutable
 
 class Chapter11Test extends FunSuite {
 
@@ -276,23 +275,23 @@ class Chapter11Test extends FunSuite {
 
   }
 
-  test("Vigenère Ciphers") {
+  test("Vigenère Chipers") {
 
-    def ciphers(s: Seq[Char], key: Seq[Char], count: Int = 0): String = s match {
+    def chipers(s: Seq[Char], key: Seq[Char], count: Int = 0): String = s match {
       case Nil => ""
-      case x :: xs => (x.toInt + (key(count % key.length).toInt - 'A'.toInt)).toChar + ciphers(xs, key, count + 1)
+      case x :: xs => (x.toInt + (key(count % key.length).toInt - 'A'.toInt)).toChar + chipers(xs, key, count + 1)
     }
 
-    def unCiphers(s: Seq[Char], key: Seq[Char], count: Int = 0): String = s match {
+    def unChipers(s: Seq[Char], key: Seq[Char], count: Int = 0): String = s match {
       case Nil => ""
-      case x :: xs => (x.toInt - (key(count % key.length).toInt - 'A'.toInt)).toChar + unCiphers(xs, key, count + 1)
+      case x :: xs => (x.toInt - (key(count % key.length).toInt - 'A'.toInt)).toChar + unChipers(xs, key, count + 1)
     }
 
     val m = "MEET AT DAWN"
 
     val key = "ALLY".toList
     assert {
-      unCiphers(ciphers(m.toList, key).toList, key) == m
+      unChipers(chipers(m.toList, key).toList, key) == m
     }
   }
 

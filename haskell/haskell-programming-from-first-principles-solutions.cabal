@@ -25,7 +25,8 @@ test-suite spec
   ghc-options: -Wall
   build-depends:
       base >=4.7 && <5
-    , hspec ==2.*
+    , hspec
+    , QuickCheck
     , haskell-programming-from-first-principles-solutions
     , time
 

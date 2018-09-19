@@ -1,3 +1,5 @@
+import cats.{Monoid, Semigroup}
+
 object MyPredef {
 
   import scala.math.Ordered._
@@ -36,4 +38,23 @@ object MyPredef {
   def even(number: Int): Boolean = number % 2 == 0
 
   def odd(number: Int): Boolean = !even(number)
+
+  def capitalize(s: String): String = s.capitalize
+
+  implicit val boolConjMonoid: Monoid[Boolean] = new Monoid[Boolean] {
+    override def empty: Boolean = true
+    override def combine(x: Boolean, y: Boolean): Boolean = (x, y) match {
+      case (true, true) => true
+      case _ => false
+    }
+  }
+
+  implicit val boolDisjMonoid: Monoid[Boolean] = new Monoid[Boolean] {
+    override def empty: Boolean = false
+    override def combine(x: Boolean, y: Boolean): Boolean = (x, y) match {
+      case (false, false) => false
+      case _ => true
+    }
+  }
+
 }
