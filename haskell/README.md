@@ -1,3 +1,7 @@
-# haskell-programming-from-first-principles-solutions
+# Haskell Book - Solutions in Haskell and in Scala
 
-stack test
+My solutions from [Haskell Book](http://haskellbook.com/).
+
+### run test:
+
+    stack test
