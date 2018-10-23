@@ -7,7 +7,7 @@ class Chapter15SemigroupTest extends FunSuite {
 
   test("Semigroup 8") {
     //8
-    trait Or[_]
+    sealed trait Or[_]
 
     final case class Fst[A](a: A) extends Or[A]
     final case class Snd[B](a: B) extends Or[B]
@@ -96,7 +96,7 @@ class Chapter15SemigroupTest extends FunSuite {
           Failure a <> Failure b = Failure (a <> b)
     */
 
-    trait Validation[A, B]
+    sealed trait Validation[A, B]
 
     final case class Failure[A, B](a: A) extends Validation[A, B]
     final case class Success[A, B](b: B) extends Validation[A, B]

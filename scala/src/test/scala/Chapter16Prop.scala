@@ -1,4 +1,3 @@
-import cats.Functor
 import cats.instances.list._
 import org.scalacheck.Arbitrary.arbitrary
 import org.scalacheck.Gen.{const, listOf}
@@ -199,12 +198,12 @@ class Chapter16Prop extends Properties("Chapter16Prop") {
 
     final case class Four[A, B, C, D](a: A, b: B, c: C, d: D)
 
-    implicit def myFunctor[X, Y, Z]: Functor[({type T[A] = Four[X, Y, Z, A]})#T] = new Functor[({type T[A] = Four[X, Y, Z, A]})#T] {
-
-      override def map[A, B](fa: Four[X, Y, Z, A])(f: A => B): Four[X, Y, Z, B] = fa match {
-        case Four(a1, a2, a3, a4) => Four(a1, a2, a3, f(a4))
-      }
-    }
+//    implicit def myFunctor[X, Y, Z]: Functor[({type T[A] = Four[X, Y, Z, A]})#T] = new Functor[({type T[A] = Four[X, Y, Z, A]})#T] {
+//
+//      override def map[A, B](fa: Four[X, Y, Z, A])(f: A => B): Four[X, Y, Z, B] = fa match {
+//        case Four(a1, a2, a3, a4) => Four(a1, a2, a3, f(a4))
+//      }
+//    }
 
     val rand: Gen[List[Four[String, Byte, Char, Int]]] = listOf(for {
       x <- arbitrary[String]
