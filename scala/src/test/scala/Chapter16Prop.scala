@@ -1,6 +1,6 @@
 import cats.instances.list._
 import org.scalacheck.Arbitrary.arbitrary
-import org.scalacheck.Gen.{const, listOf}
+import org.scalacheck.Gen.listOf
 import org.scalacheck.Prop.forAll
 import org.scalacheck.{Gen, Properties}
 import cats.Functor

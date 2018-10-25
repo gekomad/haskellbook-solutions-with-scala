@@ -1,4 +1,3 @@
-import cats.Applicative
 import org.scalatest.FunSuite
 
 class Chapter17Test extends FunSuite {
